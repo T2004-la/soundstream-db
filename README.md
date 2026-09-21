@@ -5,7 +5,7 @@ An enterprise-grade relational database schema designed for a modern music strea
 
 ![CS50 SQL Certified](https://img.shields.io/badge/CS50%20SQL-Certified-0052CC?style=for-the-badge&logo=harvard&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-[![Video Demo](https://img.shields.io/badge/YouTube-Video_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/TcybBBd_ZHU)
+[![Video Demo](https://img.shields.io/badge/YouTube-Video_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)]([https://youtu.be/TcybBBd_ZHU](https://youtu.be/TcybBBd_ZHU))
 
 ---
 
@@ -32,20 +32,35 @@ The architecture comprises **6 interrelated entities** normalized to eliminate d
 | **`playlists`** | User-generated playlist containers | `id` (PK), `title`, `user_id` (FK), `created_at` |
 | **`playlist_songs`** | **Junction Table** (Many-to-Many mapping) | `playlist_id` (FK), `song_id` (FK) -> *Composite Primary Key* |
 
-```mermaid
-erDiagram
-    Artists ||--o{ Albums : "produces"
-    Albums ||--o{ Songs : "contains"
-    Users ||--o{ Playlists : "creates"
-    Playlists ||--o{ Playlist_Songs : "includes"
-    Songs ||--o{ Playlist_Songs : "appears in"
+```text
+┌─────────┐       ┌─────────┐       ┌─────────┐
+│ Artists │──1:N──│ Albums  │──1:N──│  Songs  │
+└─────────┘       └─────────┘       └────┬────┘
+                                         │
+                                        M:N
+┌─────────┐       ┌───────────┐          │
+│  Users  │──1:N──│ Playlists │──────────┘
+└─────────┘       └───────────┘
+⚡ Key Features & Optimizations
+Relational Integrity: Implemented explicit Foreign Key constraints to maintain strict data integrity across all entities.
+
+Search Optimization (Indexes):
+
+song_title_index on songs(title) to accelerate track lookups.
+
+artist_name_index on artists(name) for quick artist discovery.
+
+Complex Query Simplification (Views):
+
+playlist_details: A pre-compiled 6-table JOIN view that aggregates user details, playlist names, song titles, albums, and artist metadata into a single read-optimized structure.
+
 🛠️ Usage & Quickstart
 Prerequisites
 Make sure you have SQLite3 installed on your system.
 
 1. Clone the Repository
 Bash
-git clone [https://github.com/T2004-la/soundstream-db.git](https://github.com/T2004-la/soundstream-db.git)
+git clone https://github.com/T2004-la/soundstream-db.git
 cd soundstream-db
 2. Build the Schema
 Initialize the database instance and build tables, indexes, and views:
@@ -58,4 +73,5 @@ Execute typical platform workflows (adding users, creating playlists, querying v
 Bash
 sqlite3 soundstream.db < queries.sql
 🎓 Verified Certificate
+This project was developed by Tara Latifi as the capstone submission for CS50 SQL.
 This project was developed by Tara Latifi as the capstone submission for CS50 SQL.
