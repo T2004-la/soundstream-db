@@ -1,3 +1,4 @@
+Markdown
 # 🎵 SoundStream Music Database
 
 An enterprise-grade relational database schema designed for a modern music streaming platform (similar to Spotify or Apple Music). Built and evaluated as the Final Project for **CS50's Introduction to Databases with SQL (CS50 SQL)** at **Harvard University**.
@@ -30,6 +31,7 @@ The architecture comprises **6 interrelated entities** normalized to eliminate d
 | **`songs`** | Individual track metadata | `id` (PK), `title`, `album_id` (FK), `duration_seconds` |
 | **`playlists`** | User-generated playlist containers | `id` (PK), `title`, `user_id` (FK), `created_at` |
 | **`playlist_songs`** | **Junction Table** (Many-to-Many mapping) | `playlist_id` (FK), `song_id` (FK) -> *Composite Primary Key* |
+
 ```mermaid
 erDiagram
     Artists ||--o{ Albums : "produces"
@@ -37,26 +39,25 @@ erDiagram
     Users ||--o{ Playlists : "creates"
     Playlists ||--o{ Playlist_Songs : "includes"
     Songs ||--o{ Playlist_Songs : "appears in"
----
+⚡ Key Features & Optimizations
+Relational Integrity: Implemented explicit Foreign Key constraints to maintain strict data integrity across all entities.
 
-## ⚡ Key Features & Optimizations
+Search Optimization (Indexes):
 
-- **Relational Integrity:** Implemented explicit Foreign Key constraints to maintain strict data integrity across all entities.
-- **Search Optimization (Indexes):**
-  - `song_title_index` on `songs(title)` to accelerate track lookups.
-  - `artist_name_index` on `artists(name)` for quick artist discovery.
-- **Complex Query Simplification (Views):**
-  - `playlist_details`: A pre-compiled 6-table `JOIN` view that aggregates user details, playlist names, song titles, albums, and artist metadata into a single read-optimized structure.
+song_title_index on songs(title) to accelerate track lookups.
 
----
+artist_name_index on artists(name) for quick artist discovery.
 
-## 🛠️ Usage & Quickstart
+Complex Query Simplification (Views):
 
-### Prerequisites
-Make sure you have [SQLite3](https://www.sqlite.org/index.html) installed on your system.
+playlist_details: A pre-compiled 6-table JOIN view that aggregates user details, playlist names, song titles, albums, and artist metadata into a single read-optimized structure.
 
-### 1. Clone the Repository
-```bash
+🛠️ Usage & Quickstart
+Prerequisites
+Make sure you have SQLite3 installed on your system.
+
+1. Clone the Repository
+Bash
 git clone [https://github.com/T2004-la/soundstream-db.git](https://github.com/T2004-la/soundstream-db.git)
 cd soundstream-db
 2. Build the Schema
