@@ -72,6 +72,11 @@ Execute typical platform workflows (adding users, creating playlists, querying v
 
 Bash
 sqlite3 soundstream.db < queries.sql
-🎓 Verified Certificate
-This project was developed by Tara Latifi as the capstone submission for CS50 SQL.
 
+## 🎓 Verified Certificate
+
+This project was developed by **Tara Latifi** as the capstone submission for **CS50 SQL**.
+
+<p align="center">
+  <img src="certificate.png" alt="CS50 SQL Certificate" width="80%">
+</p>
