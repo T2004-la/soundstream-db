@@ -39,19 +39,6 @@ erDiagram
     Users ||--o{ Playlists : "creates"
     Playlists ||--o{ Playlist_Songs : "includes"
     Songs ||--o{ Playlist_Songs : "appears in"
-⚡ Key Features & Optimizations
-Relational Integrity: Implemented explicit Foreign Key constraints to maintain strict data integrity across all entities.
-
-Search Optimization (Indexes):
-
-song_title_index on songs(title) to accelerate track lookups.
-
-artist_name_index on artists(name) for quick artist discovery.
-
-Complex Query Simplification (Views):
-
-playlist_details: A pre-compiled 6-table JOIN view that aggregates user details, playlist names, song titles, albums, and artist metadata into a single read-optimized structure.
-
 🛠️ Usage & Quickstart
 Prerequisites
 Make sure you have SQLite3 installed on your system.
