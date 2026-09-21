@@ -74,4 +74,4 @@ Bash
 sqlite3 soundstream.db < queries.sql
 🎓 Verified Certificate
 This project was developed by Tara Latifi as the capstone submission for CS50 SQL.
-This project was developed by Tara Latifi as the capstone submission for CS50 SQL.
+
