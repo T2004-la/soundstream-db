@@ -68,5 +68,5 @@ Execute typical platform workflows (adding users, creating playlists, querying v
 This project was developed by **Tara Latifi** as the capstone submission for **CS50 SQL**.
 
 <p align="center">
-  <img src="certificate.png" alt="CS50 SQL Certificate" width="80%">
+  <img src="SQL.png" alt="CS50 SQL Certificate" width="80%">
 </p>
